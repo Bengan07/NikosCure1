@@ -1,10 +1,10 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Charactermovement : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float defaultMoveSpeed = 5f; // Default move speed
+    [SerializeField] float runSpeed = 7f;
     [SerializeField] float dashDistance = 5f;
     [SerializeField] float dashTime = 0.5f;
     [SerializeField] float dashCooldown = 2f;
@@ -14,9 +14,12 @@ public class Charactermovement : MonoBehaviour
     Rigidbody2D myRigidBody;
 
     Vector2 moveDirection;
+    float moveSpeed; // Current move speed
+
     private void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        moveSpeed = defaultMoveSpeed; // Initialize move speed to default value
     }
 
     void Update()
@@ -25,6 +28,15 @@ public class Charactermovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = runSpeed;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = defaultMoveSpeed; // Set it back to the default move speed when Left Shift is released
+        }
 
         if (Input.GetKey(KeyCode.Space) && !isDashing)
         {
@@ -46,12 +58,12 @@ public class Charactermovement : MonoBehaviour
         float timeElapsed = 0f;
         while (timeElapsed < dashTime)
         {
-            transform.Translate(dashDirection * dashDistance * dashSpeed);
-            timeElapsed += Time.deltaTime;
+            transform.Translate(dashDirection * dashDistance * dashSpeed * Time.fixedDeltaTime);
+            timeElapsed += Time.fixedDeltaTime;
             yield return null;
         }
+
         yield return new WaitForSeconds(dashCooldown);
         isDashing = false;
     }
 }
-
