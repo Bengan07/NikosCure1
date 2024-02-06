@@ -454,6 +454,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: dashTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: runSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: dashDistance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4744677398962045936, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
+      propertyPath: defaultMoveSpeed
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5400278037696966199, guid: 5258031a6ef872d4aab207a613a08f31, type: 3}
       propertyPath: m_Name
       value: TemporaryCharacter
