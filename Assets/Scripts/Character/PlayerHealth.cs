@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+   
     [SerializeField] Sprite[] heartsSprites;
 
     int currentHealthSpriteIndex = 0;
+
+
 
     UI ui;
     Image healthBar;
@@ -17,20 +20,33 @@ public class PlayerHealth : MonoBehaviour
 
         healthBar = ui.GetComponentInChildren<Image>();
 
-        healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
+        //healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
+
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
+    }   
+    public int health;
+    public int maxHealth = 3;
 
-    void TakeDamage()
+    public void TakeDamage(int amount)
     {
-        currentHealthSpriteIndex++;
-        healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
+        if (currentHealthSpriteIndex < heartsSprites.Length - 1)
+        {
+            currentHealthSpriteIndex++;
+            healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
+        }
 
-        // Damage and death here
+        health -= amount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+   
+    
 }
