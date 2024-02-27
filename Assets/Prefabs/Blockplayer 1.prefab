@@ -190,4 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d4490b5b662ca4781956c42c29da3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartsSprites: []
+  heartsSprites:
+  - {fileID: -194402912, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  - {fileID: -1917016560, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  - {fileID: -1238304241, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  - {fileID: 1464738048, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  health: 0
+  maxHealth: 3

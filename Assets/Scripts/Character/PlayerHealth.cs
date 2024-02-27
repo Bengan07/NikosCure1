@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthBar = ui.GetComponentInChildren<Image>();
 
-        //healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
+        healthBar.sprite = heartsSprites[currentHealthSpriteIndex];
 
         health = maxHealth;
     }
