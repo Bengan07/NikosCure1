@@ -6,12 +6,9 @@ using System;
 
 public class Apple : MonoBehaviour, ICollectible
 {
-    public static event HandleAppleCollected OnAppleCollected;
-    public static event Action OnAppleCollected;
-    public delegate void HandleAppleCollected(ItemData itemData);
+    public static event Action<ItemData> OnAppleCollected;
     public ItemData appleData;
 
- 
     public void Collect()
     {
         Destroy(gameObject);
