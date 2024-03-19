@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PauseCanvas
   - Water1
+  - HealthZone
   layers:
   - Default
   - TransparentFX
