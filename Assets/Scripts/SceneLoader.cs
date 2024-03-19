@@ -22,18 +22,18 @@ public class SceneLoader : MonoBehaviour
     }
 
 
-    public GameObject Canvas;
+    public GameObject PauseCanvas;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             // Show the "Pause Menu" canvas
-            Canvas.SetActive(true);
+            PauseCanvas.SetActive(true);
         }
         else
         {
             // Hide the "Pause Menu" canvas
-            Canvas.SetActive(false);
+            PauseCanvas.SetActive(false);
         }
     }
 
