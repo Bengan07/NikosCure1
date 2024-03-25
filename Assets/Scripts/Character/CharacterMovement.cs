@@ -22,8 +22,22 @@ public class Charactermovement : MonoBehaviour
         moveSpeed = defaultMoveSpeed; // Initialize move speed to default value
     }
 
+    //Reference to players animator
+    public Animator anim;
+
+    //The direction axis where the player is gonna move
+    float horizontal;
+    float vertical;
+
     void Update()
-    {
+    { 
+        //Getting the players input
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        //Setting the animators parameters
+        anim.SetFloat("X", horizontal);
+        anim.SetFloat("Y", vertical);
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -66,4 +80,6 @@ public class Charactermovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         isDashing = false;
     }
+
+
 }
