@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth; // Set the initial health value
+
         ui = FindObjectOfType<UI>(); // Find the UI script in the scene
 
         healthBar = ui.GetComponentInChildren<Image>(); // Get the health bar image component

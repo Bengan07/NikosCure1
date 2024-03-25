@@ -8,7 +8,7 @@ public class Charactermovement : MonoBehaviour
     [SerializeField] float dashDistance = 5f;
     [SerializeField] float dashTime = 0.5f;
     [SerializeField] float dashCooldown = 2f;
-    [SerializeField] float dashSpeed = 5f;
+    [SerializeField] float dashSpeed = 5f; // Speed of the dash
     private bool isDashing;
 
     Rigidbody2D myRigidBody;
@@ -22,45 +22,34 @@ public class Charactermovement : MonoBehaviour
         moveSpeed = defaultMoveSpeed; // Initialize move speed to default value
     }
 
-    //Reference to players animator
-    public Animator anim;
-
-    //The direction axis where the player is gonna move
-    float horizontal;
-    float vertical;
-
     void Update()
-    { 
-        //Getting the players input
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
-
-        //Setting the animators parameters
-        anim.SetFloat("X", horizontal);
-        anim.SetFloat("Y", vertical);
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-
-        moveDirection = new Vector2(moveX, moveY).normalized;
-
+    {
+        // Check if Left Shift key is pressed
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            moveSpeed = runSpeed;
+            moveSpeed = runSpeed; // Set move speed to run speed
         }
+        // Check if Left Shift key is released
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            moveSpeed = defaultMoveSpeed; // Set it back to the default move speed when Left Shift is released
+            moveSpeed = defaultMoveSpeed; // Set move speed back to default value
         }
 
+        // Check if Space key is pressed and not currently dashing
         if (Input.GetKey(KeyCode.Space) && !isDashing)
         {
-            StartCoroutine(Dash());
+            StartCoroutine(Dash()); // Start the dash coroutine
         }
+
+        // Handle character movement input
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
     void FixedUpdate()
     {
-        myRigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        myRigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed); // Set the velocity of the rigidbody based on move direction and move speed
     }
 
     IEnumerator Dash()
@@ -72,7 +61,7 @@ public class Charactermovement : MonoBehaviour
         float timeElapsed = 0f;
         while (timeElapsed < dashTime)
         {
-            transform.Translate(dashDirection * dashDistance * dashSpeed * Time.fixedDeltaTime);
+            transform.Translate(dashDirection * dashDistance * dashSpeed * Time.fixedDeltaTime); // Translate the transform based on dash direction, dash distance, dash speed, and fixed delta time
             timeElapsed += Time.fixedDeltaTime;
             yield return null;
         }
@@ -80,6 +69,4 @@ public class Charactermovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         isDashing = false;
     }
-
-
 }
