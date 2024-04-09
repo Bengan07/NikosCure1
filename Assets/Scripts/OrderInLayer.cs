@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class OrderInLayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int orderInLayer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
