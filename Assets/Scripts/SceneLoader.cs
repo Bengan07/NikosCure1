@@ -14,6 +14,5 @@ public static class SceneLoader
         SceneManager.LoadScene("Starter World");
     }
 
-
-
+    
 }
