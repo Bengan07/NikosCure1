@@ -13,4 +13,14 @@ public class SceneLoader2 : MonoBehaviour
     {
         SceneManager.LoadScene("StarterWorld");
     }
+
+    public void LoadHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
