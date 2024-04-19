@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class OrderInLayer : MonoBehaviour
 {
-    public int orderInLayer;
 
+
+    
 
 }
