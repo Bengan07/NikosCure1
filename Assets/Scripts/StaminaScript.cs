@@ -9,12 +9,13 @@ public class StaminaScript : MonoBehaviour
     public float sprintStaminaConsumptionRate = 20f;
 
     private float regenTimer;
+    CharacterMovement characterMovement;
 
     void Start()
     {
         currentStamina = maxStamina;
 
-        
+        characterMovement = GetComponent<CharacterMovement>();
     }
 
     void Update()
@@ -24,7 +25,7 @@ public class StaminaScript : MonoBehaviour
 
         if (currentStamina <= 0)
         {
-            
+            characterMovement
         }
     }
 

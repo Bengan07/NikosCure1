@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Charactermovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] float defaultMoveSpeed = 5f; // Default move speed
     [SerializeField] float runSpeed = 7f;
