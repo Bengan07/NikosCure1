@@ -6,9 +6,11 @@ public class SceneLoader2 : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene("World 2");
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
-    
+
     public void LoadFirstLevel()
     {
         SceneManager.LoadScene("StarterWorld");
