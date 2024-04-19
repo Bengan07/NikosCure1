@@ -8,7 +8,6 @@ TagManager:
   - Water1
   - HealthZone
   - Enemy
-  - PointyThing
   layers:
   - Default
   - TransparentFX

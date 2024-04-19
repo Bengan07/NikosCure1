@@ -13,6 +13,8 @@ public class StaminaScript : MonoBehaviour
     void Start()
     {
         currentStamina = maxStamina;
+
+        
     }
 
     void Update()
@@ -20,9 +22,9 @@ public class StaminaScript : MonoBehaviour
         RegenerateStamina();
         HandleSprintInput();
 
-        if (currentStamina == 0)
+        if (currentStamina <= 0)
         {
-            Debug.Log("No more sprint");
+            
         }
     }
 

@@ -609,6 +609,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc18b61a9e4ab74891b3c642fee386e, type: 3}
+--- !u!1 &235576133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 638982907820550710, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
+  m_PrefabInstance: {fileID: 8544743579041378698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &253988200 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6104507636587536504, guid: 4cc18b61a9e4ab74891b3c642fee386e, type: 3}
@@ -11974,6 +11979,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7548893810548339103, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
   m_PrefabInstance: {fileID: 8544743579041378698}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1912033887
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235576133}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1001 &1924005528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12060,6 +12092,10 @@ PrefabInstance:
       propertyPath: m_Simulated
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2319116728166442780, guid: 2de8dcf188ebb2045a68d9d3bfbe7190, type: 3}
+      propertyPath: MaxHealth
+      value: 9999
+      objectReference: {fileID: 0}
     - target: {fileID: 2422284450730057706, guid: 2de8dcf188ebb2045a68d9d3bfbe7190, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -12111,6 +12147,10 @@ PrefabInstance:
     - target: {fileID: 3727296548416269078, guid: 2de8dcf188ebb2045a68d9d3bfbe7190, type: 3}
       propertyPath: m_Name
       value: RatEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727296548416269078, guid: 2de8dcf188ebb2045a68d9d3bfbe7190, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4608538500937823425, guid: 2de8dcf188ebb2045a68d9d3bfbe7190, type: 3}
       propertyPath: player
@@ -12798,6 +12838,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword
       objectReference: {fileID: 0}
+    - target: {fileID: 6826091251005391866, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
+      propertyPath: pushForce
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826091251005391866, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
+      propertyPath: hitsToPush
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826091251005391866, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
+      propertyPath: KnockbackForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7548893810548339103, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -12849,7 +12901,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 638982907820550710, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1912033887}
   m_SourcePrefab: {fileID: 100100000, guid: e13c7d1e97b3fdf479eabf7caa48f7f9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

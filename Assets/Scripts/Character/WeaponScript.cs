@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class WeaponScript : MonoBehaviour
 {
-    private void Update()
-    {
-        
-    }
+    public float KnockbackForce = 10f;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
