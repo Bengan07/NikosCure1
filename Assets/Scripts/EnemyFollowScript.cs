@@ -29,8 +29,14 @@ public class EnemyFollowScript : MonoBehaviour
 
                 transform.Translate(direction * moveSpeed * Time.deltaTime);
             }
-
-            transform.LookAt(target);
+            if (player.position.y > transform.position.y)
+            {
+                FlipEnemy();
+            }
+            if (player.position.y < transform.position.y)
+            {
+                FlipEnemyBack();
+            }
         }
     }
 
@@ -38,5 +44,14 @@ public class EnemyFollowScript : MonoBehaviour
     {
         Vector3 screenPos = mainCamera.WorldToViewportPoint(transform.position);
         return screenPos.x > 0 && screenPos.x < 1 && screenPos.y > 0 && screenPos.y < 1 && screenPos.z > 0;
+    }
+
+    private void FlipEnemy()
+    {
+        transform.localScale = new Vector2(1, -1);
+    }
+    private void FlipEnemyBack()
+    {
+        transform.localScale = new Vector2(1, 1);
     }
 }
