@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Worm Neutral
+  m_Name: Worm Anim Default
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
