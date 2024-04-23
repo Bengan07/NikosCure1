@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     UI ui;
     Image healthBar;
 
+    public bool isBlocking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,17 +42,20 @@ public class PlayerHealth : MonoBehaviour
     // Function to take damage
     public void TakeDamage(int amount)
     {
-        if (currentHealthSpriteIndex < heartsSprites.Length - 1)
+        if (!isBlocking)
         {
-            currentHealthSpriteIndex++; // Decrease the index of the current heart sprite
-            healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
-        }
+            if (currentHealthSpriteIndex < heartsSprites.Length - 1)
+            {
+                currentHealthSpriteIndex++; // Decrease the index of the current heart sprite
+                healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
+            }
 
-        health -= amount; // Decrease the health value
+            health -= amount; // Decrease the health value
 
-        if (health <= 0)
-        {
-            Destroy(gameObject); // Destroy the player character if health reaches zero
+            if (health <= 0)
+            {
+                Destroy(gameObject); // Destroy the player character if health reaches zero
+            }
         }
     }
 
