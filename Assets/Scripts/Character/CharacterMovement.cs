@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -10,6 +11,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float dashCooldown = 2f;
     [SerializeField] float dashSpeed = 5f; // Speed of the dash
     private bool isDashing;
+    private bool isColliding;
 
     Rigidbody2D myRigidBody;
 
@@ -61,12 +63,28 @@ public class CharacterMovement : MonoBehaviour
         float timeElapsed = 0f;
         while (timeElapsed < dashTime)
         {
-            transform.Translate(dashDirection * dashDistance * dashSpeed * Time.fixedDeltaTime); // Translate the transform based on dash direction, dash distance, dash speed, and fixed delta time
+            if (isColliding)
+            {
+                isDashing = false;
+                yield break;
+            }
+
+            transform.Translate(dashDirection * dashDistance * dashSpeed * Time.fixedDeltaTime);
             timeElapsed += Time.fixedDeltaTime;
             yield return null;
         }
 
         yield return new WaitForSeconds(dashCooldown);
         isDashing = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        isColliding = true;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        isColliding = false;
     }
 }
