@@ -16900,7 +16900,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1255560877378824444, guid: 87828e6c870137e459ae1f1b8c3551b5, type: 3}
       propertyPath: dashDistance
-      value: 1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2187240951498234841, guid: 87828e6c870137e459ae1f1b8c3551b5, type: 3}
       propertyPath: m_Name
