@@ -5,7 +5,6 @@ public class ShieldScript : MonoBehaviour
     public float maxBlocks = 3;
     public float currentBlocks;
     public float blockRechargeTime = 2f;
-    private float blockRechargeTimer = 0f;
 
     bool isRecharging;
 
@@ -31,23 +30,19 @@ public class ShieldScript : MonoBehaviour
                 playerHealth.isBlocking = false;
             }
         }
-        if (isRecharging)
-        {
-            blockRechargeTimer += Time.deltaTime;
-            if (blockRechargeTimer >= blockRechargeTime)
-            {
-                // Reset timer and stop recharging
-                blockRechargeTimer = 0f;
-                isRecharging = false;
-                // Refill blocks
-                currentBlocks = maxBlocks;
-            }
-        }
         if (currentBlocks <= 0)
         {
             playerHealth.isBlocking = false;
+            Invoke("blockRecharge", blockRechargeTime);
+
         }
     }
+
+    void blockRecharge()
+    {
+        currentBlocks = maxBlocks;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3292914621368508964}
   - component: {fileID: 5946166994765527341}
   - component: {fileID: 1255560877378824444}
-  - component: {fileID: -3053496829284174320}
   m_Layer: 0
   m_Name: "Huvudkarakt\xE4r1"
   m_TagString: Untagged
@@ -178,6 +177,7 @@ MonoBehaviour:
   - {fileID: -1917016560, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
   - {fileID: -1238304241, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
   - {fileID: 1464738048, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  isBlocking: 0
   health: 0
   maxHealth: 3
 --- !u!114 &1255560877378824444
@@ -194,24 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMoveSpeed: 5
   runSpeed: 7
-  dashDistance: 3
+  dashDistance: 2.5
   dashTime: 0.5
   dashCooldown: 2
-  dashSpeed: 5
---- !u!114 &-3053496829284174320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2187240951498234841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db6bcc08b4851e2448ea51cfdd04777d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxStamina: 100
-  currentStamina: 0
-  staminaRegenRate: 10
-  staminaRegenDelay: 1
-  sprintStaminaConsumptionRate: 20
+  dashSpeed: 3

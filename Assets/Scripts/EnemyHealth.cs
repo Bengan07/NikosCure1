@@ -5,6 +5,8 @@ public class EnemyHealth : MonoBehaviour
     public int MaxHealth = 3;
     public int CurrentHealth;
 
+    bool isDying = false;
+
     void Start()
     {
         CurrentHealth = MaxHealth;
@@ -15,7 +17,9 @@ public class EnemyHealth : MonoBehaviour
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
         {
-            Die();
+            isDying = true;
+
+            Invoke("Die", 1);
         }
     }
 
