@@ -11,6 +11,8 @@ public class EnemyFollowScript : MonoBehaviour
     private Camera mainCamera;
 
     Rigidbody2D myRigidBody2D;
+
+    public bool isAttacking;
     void Start()
     {
         mainCamera = Camera.main;
@@ -20,6 +22,14 @@ public class EnemyFollowScript : MonoBehaviour
 
     void Update()
     {
+        if (isAttacking)
+        {
+            moveSpeed = 0f;
+        }
+        if (!isAttacking) 
+        {
+            moveSpeed = 3f;
+        }
         if (target != null)
         {
             if (IsEnemyVisible())
@@ -38,6 +48,7 @@ public class EnemyFollowScript : MonoBehaviour
                 FlipEnemyBack();
             }
         }
+        
     }
 
     bool IsEnemyVisible()
@@ -54,4 +65,6 @@ public class EnemyFollowScript : MonoBehaviour
     {
         transform.localScale = new Vector2(1, 1);
     }
+
+    
 }
