@@ -3,7 +3,7 @@ using UnityEngine;
 public class RatDamage : MonoBehaviour
 {
     public float resetTime = 0.5f;
-    bool isAttacking = false;
+    public bool isAttacking = false;
     Animator animator;
 
     EnemyFollowScript enemyFollowScript;
