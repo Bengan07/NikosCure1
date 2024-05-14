@@ -13,6 +13,14 @@ public class EnemyHealth : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
+    private void Update()
+    {
+        if (CurrentHealth < MaxHealth)
+        {
+            Debug.Log("enemy damage taken");
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         CurrentHealth -= damage;

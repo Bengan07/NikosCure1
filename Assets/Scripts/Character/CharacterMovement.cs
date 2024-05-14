@@ -8,39 +8,46 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float runSpeed = 7f;
     [SerializeField] float dashDistance = 5f;
     [SerializeField] float dashTime = 0.5f;
-    [SerializeField] float dashCooldown = 2f;
+    [SerializeField] public float dashCooldown = 2f;
     [SerializeField] float dashSpeed = 5f; // Speed of the dash
     private bool isDashing;
     private bool isColliding;
 
     Rigidbody2D myRigidBody;
 
+    StaminaScript staminaScript;
+
     Vector2 moveDirection;
     float moveSpeed; // Current move speed
 
     private void Start()
     {
+        staminaScript = GetComponent<StaminaScript>();
         myRigidBody = GetComponent<Rigidbody2D>();
         moveSpeed = defaultMoveSpeed; // Initialize move speed to default value
     }
 
     void Update()
     {
-        // Check if Left Shift key is pressed
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (staminaScript.currentStamina > 0 && !isDashing)
         {
-            moveSpeed = runSpeed; // Set move speed to run speed
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                moveSpeed = runSpeed; // Set move speed to run speed
+            }
+            // Check if Space key is pressed and not currently dashing
+            if (Input.GetKey(KeyCode.Space) && !isDashing)
+            {
+                StartCoroutine(Dash()); // Start the dash coroutine
+            }
         }
-        // Check if Left Shift key is released
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             moveSpeed = defaultMoveSpeed; // Set move speed back to default value
         }
-
-        // Check if Space key is pressed and not currently dashing
-        if (Input.GetKey(KeyCode.Space) && !isDashing)
+        if (staminaScript.currentStamina == 0)
         {
-            StartCoroutine(Dash()); // Start the dash coroutine
+            moveSpeed = defaultMoveSpeed;
         }
 
         // Handle character movement input
