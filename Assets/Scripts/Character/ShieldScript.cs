@@ -5,17 +5,21 @@ public class ShieldScript : MonoBehaviour
     public float maxBlocks = 3;
     public float currentBlocks;
     public float blockRechargeTime = 2f;
-    private float blockRechargeTimer = 0f;
-
-    bool isRecharging;
+    public float maxParrys = 1;
+    public float currentParrys;
+    public float parryRechargeTime = 1f;
 
     PlayerHealth playerHealth;
+
+    public RatDamage rat;
+    public EnemyHealth enemyHealth;
 
     void Start()
     {
         playerHealth = GetComponent<PlayerHealth>();
 
         currentBlocks = maxBlocks;
+        currentParrys = maxParrys;
     }
 
     void Update()
@@ -31,23 +35,35 @@ public class ShieldScript : MonoBehaviour
                 playerHealth.isBlocking = false;
             }
         }
-        if (isRecharging)
-        {
-            blockRechargeTimer += Time.deltaTime;
-            if (blockRechargeTimer >= blockRechargeTime)
-            {
-                // Reset timer and stop recharging
-                blockRechargeTimer = 0f;
-                isRecharging = false;
-                // Refill blocks
-                currentBlocks = maxBlocks;
-            }
-        }
         if (currentBlocks <= 0)
         {
             playerHealth.isBlocking = false;
+            Invoke("blockRecharge", blockRechargeTime);
+        }
+        if (!playerHealth.isBlocking && rat.isAttacking && currentParrys > 0)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                enemyHealth.TakeDamage(1);
+                currentParrys--;
+            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            Invoke("ParryRecharge", parryRechargeTime);
         }
     }
+
+    void ParryRecharge()
+    {
+        currentParrys = maxParrys;
+    }
+
+    void blockRecharge()
+    {
+        currentBlocks = maxBlocks;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
