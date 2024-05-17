@@ -8,7 +8,7 @@ public class WeaponScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+        EnemyHealthScript enemyHealth = collision.gameObject.GetComponent<EnemyHealthScript>();
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(1);

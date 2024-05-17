@@ -9,10 +9,12 @@ public class ShieldScript : MonoBehaviour
     public float currentParrys;
     public float parryRechargeTime = 1f;
 
+    public int parryDamage = 1;
+
     PlayerHealth playerHealth;
 
     public RatDamage rat;
-    public EnemyHealth enemyHealth;
+    public EnemyHealthScript enemyHealth;
 
     void Start()
     {
@@ -44,7 +46,7 @@ public class ShieldScript : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                enemyHealth.TakeDamage(1);
+                enemyHealth.TakeDamage(parryDamage);
                 currentParrys--;
             }
         }

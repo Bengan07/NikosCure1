@@ -1,24 +1,28 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealthScript : MonoBehaviour
 {
+    public float DieTime = 3;
+
     public int MaxHealth = 3;
     public int CurrentHealth;
+
+    bool isDying = false;
+
+    EnemyFollowScript enemyFollowScript;
 
     Animator animator;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        enemyFollowScript = GetComponent<EnemyFollowScript>();
         CurrentHealth = MaxHealth;
     }
 
     private void Update()
     {
-        if (CurrentHealth < MaxHealth)
-        {
-            Debug.Log("enemy damage taken");
-        }
+        animator.SetBool("isDying", isDying);
     }
 
     public void TakeDamage(int damage)
@@ -26,11 +30,12 @@ public class EnemyHealth : MonoBehaviour
         CurrentHealth -= damage;
         if (CurrentHealth <= 0)
         {
-            Invoke("Die", 1);
+            isDying = true;
+            Invoke("RatGoByeBye", DieTime);
+            enemyFollowScript.currentMoveSpeed = 0;
         }
     }
-
-    void Die()
+    void RatGoByeBye()
     {
         Destroy(gameObject);
     }

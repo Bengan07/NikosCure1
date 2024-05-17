@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyFollowScript : MonoBehaviour
 {
     public Transform target;
+    public float currentMoveSpeed;
     public float moveSpeed = 3f;
     public float stoppingDistance = 1f;
 
@@ -24,11 +25,11 @@ public class EnemyFollowScript : MonoBehaviour
     {
         if (isAttacking)
         {
-            moveSpeed = 0f;
+            currentMoveSpeed = 0f;
         }
         if (!isAttacking) 
         {
-            moveSpeed = 3f;
+            currentMoveSpeed = moveSpeed;
         }
         if (target != null)
         {
@@ -37,7 +38,7 @@ public class EnemyFollowScript : MonoBehaviour
                 Vector3 direction = target.position - transform.position;
                 direction.Normalize();
 
-                transform.Translate(direction * moveSpeed * Time.deltaTime);
+                transform.Translate(direction * currentMoveSpeed * Time.deltaTime);
             }
             if (player.position.y > transform.position.y)
             {
