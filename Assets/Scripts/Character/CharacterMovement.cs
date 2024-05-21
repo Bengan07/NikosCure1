@@ -91,6 +91,18 @@ public class CharacterMovement : MonoBehaviour
             {
 
                 CharacterAnimator.SetBool("WalkingHorizontal", true);
+
+                //höger ellr vänster?
+                //om höger så flip sprite
+                if(moveDirection.x > 0)
+                {
+                    transform.localScale = new Vector3(-2, 2, 1);
+                }
+                else
+                {
+                    transform.localScale = new Vector3(2, 2, 1);
+                }
+
                 CharacterAnimator.SetBool("Walking", false);
 
             }
