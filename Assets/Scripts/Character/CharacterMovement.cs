@@ -1,15 +1,19 @@
 using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [SerializeField] Animator CharacterAnimator = null; // Speed of the dash
+
     [SerializeField] public float defaultMoveSpeed = 5f; // Default move speed
     [SerializeField] float runSpeed = 7f;
     [SerializeField] float dashDistance = 5f;
     [SerializeField] float dashTime = 0.5f;
     [SerializeField] public float dashCooldown = 2f;
     [SerializeField] float dashSpeed = 5f; // Speed of the dash
+
     private bool isDashing;
     private bool isColliding;
 
@@ -54,11 +58,33 @@ public class CharacterMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(moveX, moveY).normalized;
+        if (moveDirection.magnitude > 0)
+        {
+            if (math.abs(moveDirection.x) >= math.abs(moveDirection.y))
+            {
+
+                CharacterAnimator.SetBool("WalkingHorizontal", true);
+                CharacterAnimator.SetBool("Walking", false);
+
+            }
+            else
+            {
+                CharacterAnimator.SetBool("Walking", true);
+                CharacterAnimator.SetBool("WalkingHorizontal", false);
+
+            }
+        }
+        else
+        {
+            CharacterAnimator.SetBool("Walking", false);
+            CharacterAnimator.SetBool("WalkingHorizontal", false);
+        }
     }
 
     void FixedUpdate()
     {
         myRigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed); // Set the velocity of the rigidbody based on move direction and move speed
+  
     }
 
     IEnumerator Dash()

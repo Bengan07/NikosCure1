@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     int currentHealthSpriteIndex = 0; // Index of the current heart sprite
 
     UI ui;
-    Image healthBar;
+    public Image healthBar;
 
     public bool isBlocking = false;
 
@@ -19,10 +19,16 @@ public class PlayerHealth : MonoBehaviour
         health = maxHealth; // Set the initial health value
 
         ui = FindObjectOfType<UI>(); // Find the UI script in the scene
+        if (ui != null)
+        {
+            healthBar = ui.GetComponentInChildren<Image>(); // Get the health bar image component
 
-        healthBar = ui.GetComponentInChildren<Image>(); // Get the health bar image component
+        }
+        if(healthBar != null)
+        {
+            healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Set the initial heart sprite
 
-        healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Set the initial heart sprite
+        }
 
         health = maxHealth; // Set the initial health value
     }
@@ -47,7 +53,12 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealthSpriteIndex < heartsSprites.Length - 1)
             {
                 currentHealthSpriteIndex++; // Decrease the index of the current heart sprite
-                healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
+                if (healthBar != null)
+                {
+                    healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
+
+
+                }
             }
 
             health -= amount; // Decrease the health value
@@ -83,7 +94,10 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealthSpriteIndex > 0)
         {
             currentHealthSpriteIndex--; // Increase the index of the current heart sprite
-            healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
+            if (healthBar != null)
+            {
+                healthBar.sprite = heartsSprites[currentHealthSpriteIndex]; // Update the health bar sprite
+            }
         }
 
         health += amount; // Increase the health value
