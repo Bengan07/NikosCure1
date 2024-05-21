@@ -117,6 +117,7 @@ public class CharacterMovement : MonoBehaviour
                     CharacterAnimator.SetBool("WalkingBackward", true); // Set WalkingBackward to true for moving up
                     CharacterAnimator.SetBool("Walking", false);
                 }
+                
             }
             else
             {
@@ -135,7 +136,12 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         myRigidBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed); // Set the velocity of the rigidbody based on move direction and move speed
-  
+        
+        if(myRigidBody.velocity == Vector2.zero)
+        {
+            CharacterAnimator.SetBool("WalkingBackward", false);
+
+        }
     }
 
     IEnumerator Dash()
