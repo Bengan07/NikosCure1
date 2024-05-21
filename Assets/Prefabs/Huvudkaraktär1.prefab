@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5946166994765527341}
   - component: {fileID: 1255560877378824444}
   - component: {fileID: -8781243507653317084}
+  - component: {fileID: 1664202718787677797}
   m_Layer: 0
   m_Name: "Huvudkarakt\xE4r1"
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   - {fileID: -1917016560, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
   - {fileID: -1238304241, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
   - {fileID: 1464738048, guid: 944454918ae8ef44f88139925fab55fc, type: 3}
+  healthBar: {fileID: 0}
   isBlocking: 0
   health: 0
   maxHealth: 3
@@ -193,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eddefb10579ab54fbf44351f8e1b94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CharacterAnimator: {fileID: 1664202718787677797}
   defaultMoveSpeed: 5
   runSpeed: 7
   dashDistance: 2.5
@@ -216,3 +219,25 @@ MonoBehaviour:
   staminaDrainRate: 5
   staminaRegenRate: 5
   dashStaminaCost: 1
+  staminaRegenTimer: 2
+--- !u!95 &1664202718787677797
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2187240951498234841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7c69da1768011ae4ba4eabde9b2b2e4d, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
