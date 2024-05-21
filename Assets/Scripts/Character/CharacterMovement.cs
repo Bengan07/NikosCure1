@@ -29,6 +29,7 @@ public class CharacterMovement : MonoBehaviour
         staminaScript = GetComponent<StaminaScript>();
         myRigidBody = GetComponent<Rigidbody2D>();
         moveSpeed = defaultMoveSpeed; // Initialize move speed to default value
+        Debug.Log("AAAAAAA");
     }
 
     void Update()
@@ -70,6 +71,19 @@ public class CharacterMovement : MonoBehaviour
                     // Character is not moving in the y-axis
                     CharacterAnimator.SetBool("WalkingBackward", false);
                     CharacterAnimator.SetBool("Walking", false);
+
+                    //HÄR kolla om höger elelr vänster gå
+                    Debug.Log("x: "+moveDirection.x);
+
+                    if (moveDirection.x > 0)
+                    {
+                        //nu går du höger
+                        Debug.Log("Höger");
+                    }
+                    else{
+                        //nu går du vänster
+                        Debug.Log("vnestre");
+                    }
                 }
             }
             else
@@ -92,8 +106,6 @@ public class CharacterMovement : MonoBehaviour
 
                 CharacterAnimator.SetBool("WalkingHorizontal", true);
 
-                //höger ellr vänster?
-                //om höger så flip sprite
                 if(moveDirection.x > 0)
                 {
                     transform.localScale = new Vector3(-2, 2, 1);
