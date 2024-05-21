@@ -51,6 +51,33 @@ public class CharacterMovement : MonoBehaviour
         }
         if (staminaScript.currentStamina == 0)
         {
+            if (moveDirection.magnitude > 0)
+            {
+                if (moveDirection.y > 0)
+                {
+                    // Character is moving in the +y direction
+                    CharacterAnimator.SetBool("WalkingBackward", true);
+                    CharacterAnimator.SetBool("Walking", false);
+                }
+                else if (moveDirection.y < 0)
+                {
+                    // Character is moving in the -y direction
+                    CharacterAnimator.SetBool("Walking", true);
+                    CharacterAnimator.SetBool("WalkingBackward", false);
+                }
+                else
+                {
+                    // Character is not moving in the y-axis
+                    CharacterAnimator.SetBool("WalkingBackward", false);
+                    CharacterAnimator.SetBool("Walking", false);
+                }
+            }
+            else
+            {
+                // Character is not moving
+                CharacterAnimator.SetBool("WalkingBackward", false);
+                CharacterAnimator.SetBool("Walking", false);
+            }
             moveSpeed = defaultMoveSpeed;
         }
 
@@ -72,6 +99,30 @@ public class CharacterMovement : MonoBehaviour
                 CharacterAnimator.SetBool("Walking", true);
                 CharacterAnimator.SetBool("WalkingHorizontal", false);
 
+            }
+            if (moveDirection.magnitude > 0)
+            {
+                if (math.abs(moveDirection.x) >= math.abs(moveDirection.y))
+                {
+                    CharacterAnimator.SetBool("WalkingHorizontal", true);
+                    CharacterAnimator.SetBool("Walking", false);
+                }
+                else if (moveDirection.y < 0) // Add this condition to check if moving down
+                {
+                    CharacterAnimator.SetBool("Walking", true);
+                    CharacterAnimator.SetBool("WalkingBackward", false);
+                }
+                else
+                {
+                    CharacterAnimator.SetBool("WalkingBackward", true); // Set WalkingBackward to true for moving up
+                    CharacterAnimator.SetBool("Walking", false);
+                }
+            }
+            else
+            {
+                CharacterAnimator.SetBool("Walking", false);
+                CharacterAnimator.SetBool("WalkingHorizontal", false);
+                CharacterAnimator.SetBool("WalkingBackward", false);
             }
         }
         else
