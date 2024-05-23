@@ -20429,6 +20429,7 @@ MonoBehaviour:
   staminaDrainRate: 5
   staminaRegenRate: 5
   dashStaminaCost: 1
+  staminaRegenTimer: 2
 --- !u!1001 &2110370924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20750,11 +20751,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5431770207600357876, guid: 87828e6c870137e459ae1f1b8c3551b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.13
+      value: -10.76
       objectReference: {fileID: 0}
     - target: {fileID: 5431770207600357876, guid: 87828e6c870137e459ae1f1b8c3551b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.13
+      value: -2.24
       objectReference: {fileID: 0}
     - target: {fileID: 5431770207600357876, guid: 87828e6c870137e459ae1f1b8c3551b5, type: 3}
       propertyPath: m_LocalPosition.z
