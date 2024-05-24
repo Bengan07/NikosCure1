@@ -14,7 +14,7 @@ public class SpiderExplotionScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && animator != null)
         {
             animator.Play("SpiderExplotionAnim");
             Invoke("SpiderExplode", spiderExplodeTime);

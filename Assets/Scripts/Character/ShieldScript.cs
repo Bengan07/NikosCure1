@@ -8,6 +8,7 @@ public class ShieldScript : MonoBehaviour
     public float maxParrys = 1;
     public float currentParrys;
     public float parryRechargeTime = 1f;
+    public float blockMoveSpeed = 2;
 
     public int parryDamage = 1;
 
@@ -15,10 +16,12 @@ public class ShieldScript : MonoBehaviour
 
     public RatDamage rat;
     public EnemyHealthScript enemyHealth;
+    CharacterMovement characterMovement;
 
     void Start()
     {
         playerHealth = GetComponent<PlayerHealth>();
+        characterMovement = GetComponent<CharacterMovement>();
 
         currentBlocks = maxBlocks;
         currentParrys = maxParrys;
@@ -31,6 +34,7 @@ public class ShieldScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 playerHealth.isBlocking = true;
+
             }
             if (Input.GetKeyUp(KeyCode.F))
             {
