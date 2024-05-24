@@ -25,4 +25,16 @@ public class SceneLoader2 : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void LoadLevel3()
+
+    {
+        SceneManager.LoadScene("World3");
+    }
+
+    public void LoadLevelB()
+    { 
+        SceneManager.LoadScene("LevelB");
+    }
+
 }
