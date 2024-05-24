@@ -32,7 +32,7 @@ public class EnemyHealthScript : MonoBehaviour
         {
             isDying = true;
             Invoke("RatGoByeBye", DieTime);
-            enemyFollowScript.currentMoveSpeed = 0;
+            enemyFollowScript.moveSpeedDuringAttack = 0f;
         }
     }
     void RatGoByeBye()

@@ -4,8 +4,8 @@ public class RatDamage : MonoBehaviour
 {
     public float resetTime = 0.5f;
     public bool isAttacking = false;
-    Animator animator;
 
+    Animator animator;
     EnemyFollowScript enemyFollowScript;
 
     private void Start()
@@ -18,15 +18,16 @@ public class RatDamage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             isAttacking = true;
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
             enemyFollowScript.isAttacking = true;
+            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(1);
             Invoke("ResetIsAttacking", resetTime);
+            enemyFollowScript.moveSpeed = enemyFollowScript.moveSpeedDuringAttack;
         }
     }
 
     void ResetIsAttacking()
     {
-        enemyFollowScript.isAttacking = false;
+        isAttacking = false;
     }
 
     private void Update()
@@ -37,5 +38,10 @@ public class RatDamage : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isAttacking = false;
+        Invoke("AttackMoveSpeedResetTime", resetTime);
+    }
+    void AttackMoveSpeedResetTime()
+    {
+        enemyFollowScript.moveSpeed = enemyFollowScript.originalMoveSpeed;
     }
 }
