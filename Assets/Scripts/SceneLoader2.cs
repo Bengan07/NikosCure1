@@ -33,8 +33,16 @@ public class SceneLoader2 : MonoBehaviour
     }
 
     public void LoadLevelB()
-    { 
+    {
         SceneManager.LoadScene("LevelB");
+    }
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+
     }
 
 }
+
