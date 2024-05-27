@@ -22,7 +22,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
 
-        Debug.Log("HEJ DENNIS");
+        Debug.Log("Attack called"); 
             
             animator.SetTrigger("Attack");
 
